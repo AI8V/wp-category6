@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Course Admin Dashboard</title>
+    <link rel="stylesheet" href="../../assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../assets/css/bs-theme-overrides.css">
+    <link rel="stylesheet" href="https://cdn.snipcart.com/themes/v3.7.4/default/snipcart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/untitled.css">
+</head>
+
+<body>
+    <header id="course-header" class="container"></header>
+    <main id="content" class="container my-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <section id="learning-objectives" class="mb-5">
+                    <h2 class="text-center h3 mb-3 icon-gold">What you'll learn</h2>
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <ul class="list-unstyled mb-0 row" id="what-youll-learn-list"></ul>
+                        </div>
+                    </div>
+                </section>
+                <section id="curriculum" class="mb-5">
+                    <h2 class="text-center h3 mb-3 icon-gold">Curriculum</h2>
+                    <div class="shadow-sm accordion" id="curriculum-accordion"></div>
+                </section>
+                <section id="faq" class="mb-5">
+                    <h2 class="text-center h3 mb-3 icon-gold">Frequently Asked Questions</h2>
+                    <div class="shadow-sm accordion" id="faq-accordion"></div>
+                </section>
+            </div>
+            <div class="col-lg-4">
+                <aside class="position-sticky" style="top:2rem;">
+                    <div class="card shadow-sm">
+                        <div id="course-card-image"></div>
+                        <div class="card-body">
+                            <div class="fs-2 fw-bold text-center mb-3 icon-gold" id="course-card-price"></div>
+                            <div class="d-grid gap-2"><button class="btn btn-warning btn-lg" id="enroll-btn">Add to Cart</button><button class="btn btn-outline-secondary" id="gift-btn" data-item-custom1-name="Gift purchase (20% off)" data-item-custom1-type="checkbox" data-item-custom1-options="true[-20%]">Buy as a gift</button></div>
+                            <p class="text-center text-muted small mt-2">30-Day Money-Back Guarantee</p>
+                            <hr>
+                            <h3 class="text-center h6 mb-3 icon-gold">This course includes:</h3>
+                            <ul class="list-unstyled text-muted" id="course-card-meta"></ul>
+                        </div>
+                    </div>
+                    <div class="card text-center shadow-sm mt-4 rating-card-custom">
+                        <div class="card-body">
+                            <h3 class="h5 card-title icon-gold">Rate this course</h3>
+                            <div class="fs-2" id="user-rating-stars" aria-label="Rate this course"></div><small class="form-text text-muted" id="rating-feedback-text"></small>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <div id="snipcart" hidden="" data-api-key="ZWQzZDk4N2ItYjU2Zi00YmI0LTgzZTQtNWM0NWMxOWUyZmVjNjM4NzYxMzUwOTgzMDM0MzA3"></div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+    <script src="../../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/course-details.js"></script>
+    <script src="../../assets/js/courses.js"></script>
+    <script src="https://cdn.snipcart.com/themes/v3.7.4/default/snipcart.js"></script>
+    <script src="../../assets/js/ratings-system.js"></script>
+</body>
+
+</html>

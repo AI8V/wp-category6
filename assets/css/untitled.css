@@ -1,0 +1,32 @@
+/* ================================== */
+
+/* Course Details Page Styles */
+
+/* ================================== */
+
+#what-youll-learn-list li {
+  display: flex;
+  align-items: flex-start;
+}
+
+#what-youll-learn-list .bi {
+  margin-top: 0.2rem;
+}
+
+/* تحسين شكل الأكورديون */
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--bs-primary-bg-subtle);
+  color: var(--bs-primary-text-emphasis);
+}
+
+[data-bs-theme="dark"] .accordion-button:not(.collapsed) {
+  background-color: rgba(var(--bs-primary-rgb), 0.15);
+}
+
+/* الوضع الداكن لبطاقة المعلومات */
+
+[data-bs-theme="dark"] #course-details-page .card {
+  background-color: var(--bs-secondary-bg);
+}
+
