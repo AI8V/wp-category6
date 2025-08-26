@@ -468,6 +468,7 @@ const addSchemaMarkup = (course, realRatings = null) => {
     const giftBtn = document.getElementById('gift-btn');
 
     const setupPurchaseButtons = (course) => {
+
       if (!enrollBtn || !giftBtn) return;
 
       if (course.price > 0) {
@@ -484,15 +485,25 @@ const addSchemaMarkup = (course, realRatings = null) => {
         enrollBtn.setAttribute('data-item-description', course.description);
         enrollBtn.setAttribute('data-item-image', courseImageForCart);
 
-        // 2. جهّز زر الهدية
+
+        // 2. جهّز زر الهدية مع خصم محسوب
         giftBtn.classList.add('snipcart-add-item');
-        giftBtn.setAttribute('data-item-id', `${course.id}-gift-v2`); // ID فريد للهدية
-        giftBtn.setAttribute('data-item-name', `${course.title}`); // يمكن استخدام نفس الاسم الآن
+        giftBtn.setAttribute('data-item-id', `${course.id}-gift-v2`);
+        giftBtn.setAttribute('data-item-name', `${course.title} (Gift)`);
         giftBtn.setAttribute('data-item-price', course.price);
         giftBtn.setAttribute('data-item-url', window.location.href);
         giftBtn.setAttribute('data-item-description', course.description);
         giftBtn.setAttribute('data-item-image', courseImageForCart);
-
+        
+        // --- ✅ الحسابات الدقيقة هنا ---
+        const DISCOUNT_PERCENTAGE = 20;
+        const discountAmount = course.price * (DISCOUNT_PERCENTAGE / 100); // حساب قيمة الخصم
+        
+        // بناء السلسلة الحسابية الصحيحة
+        const priceModifierString = `true[-${discountAmount.toFixed(2)}]`;
+        
+        giftBtn.setAttribute('data-item-custom1-options', priceModifierString);
+        giftBtn.setAttribute('data-item-custom1-name', `Gift Purchase (${DISCOUNT_PERCENTAGE}% off)`);
         
       } else {
         // --- حالة الكورس المجاني ---
