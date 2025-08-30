@@ -815,3 +815,6 @@ body {
   color: var(--gold-400) !important;
 }
 
+#floatingFilterBtn.is-hidden {
+  transform: translateY(120px);
+}
