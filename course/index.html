@@ -80,68 +80,74 @@
         </nav>
     </header>
     <section class="border-warning-subtle align-items-start row g-2 border-top">
-        <aside class="col-lg-3 course-sidebar d-none d-lg-block">
+        <aside class="d-none d-lg-block col-lg-3 course-sidebar">
             <h2 class="fw-semibold text-warning h5">Filter</h2>
             <h3 class="fw-bold h5 mt-1">Categories</h3>
             <ul id="categories-list" class="list-group">
                 <li class="list-group-item mb-1">
                     <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                        <div class="form-check"><input id="catBusiness" class="form-check-input" type="checkbox" value="Business" /><label class="form-check-label ms-2" for="catBusiness">Business</label></div><span>1</span>
+                        <div class="form-check"><input id="catBusiness" class="form-check-input" type="checkbox" aria-describedby="catBusiness-count" value="Business" /><label class="form-check-label ms-2" for="catBusiness">Business</label></div><span id="catBusiness-count" aria-label="1 course available">1</span>
                     </div>
                 </li>
                 <li class="list-group-item mb-1">
                     <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                        <div class="form-check"><input id="catDesign" class="form-check-input" type="checkbox" value="Design" /><label class="form-check-label ms-2" for="catDesign">Design</label></div><span>1</span>
+                        <div class="form-check"><input id="catDesign" class="form-check-input" type="checkbox" aria-describedby="catDesign-count" value="Design" /><label class="form-check-label ms-2" for="catDesign">Design</label></div><span id="catDesign-count" aria-label="1 course available">1</span>
                     </div>
                 </li>
                 <li class="list-group-item mb-1">
                     <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                        <div class="form-check"><input id="catDeveloper" class="form-check-input" type="checkbox" value="Developer" /><label class="form-check-label ms-2" for="catDeveloper">Developer</label></div><span>1</span>
+                        <div class="form-check"><input id="catDeveloper" class="form-check-input" type="checkbox" aria-describedby="catDeveloper-count" value="Developer" /><label class="form-check-label ms-2" for="catDeveloper">Developer</label></div><span id="catDeveloper-count" aria-label="1 course available">1</span>
                     </div>
                 </li>
                 <li class="list-group-item mb-1">
                     <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                        <div class="form-check"><input id="catHealth" class="form-check-input" type="checkbox" value="Health" /><label class="form-check-label ms-2" for="catHealth">Health</label></div><span>4</span>
+                        <div class="form-check"><input id="catHealth" class="form-check-input" type="checkbox" aria-describedby="catHealth-count" value="Health" /><label class="form-check-label ms-2" for="catHealth">Health</label></div><span id="catHealth-count" aria-label="4 courses available">4</span>
                     </div>
                 </li>
                 <li class="list-group-item mb-1">
                     <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                        <div class="form-check"><input id="catIT" class="form-check-input" type="checkbox" value="IT" /><label class="form-check-label ms-2" for="catIT">IT</label></div><span>3</span>
+                        <div class="form-check"><input id="catIT" class="form-check-input" type="checkbox" aria-describedby="catIT-count" value="IT" /><label class="form-check-label ms-2" for="catIT">IT</label></div><span id="catIT-count" aria-label="3 courses available">3</span>
                     </div>
                 </li>
                 <li class="list-group-item mb-1">
                     <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                        <div class="form-check"><input id="catMarketing" class="form-check-input" type="checkbox" value="Marketing" /><label class="form-check-label ms-2" for="catMarketing">Marketing</label></div><span>1</span>
+                        <div class="form-check"><input id="catMarketing" class="form-check-input" type="checkbox" aria-describedby="catMarketing-count" value="Marketing" /><label class="form-check-label ms-2" for="catMarketing">Marketing</label></div><span id="catMarketing-count" aria-label="1 course available">1</span>
                     </div>
                 </li>
                 <li class="list-group-item mb-1">
                     <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                        <div class="form-check"><input id="catPhotography" class="form-check-input" type="checkbox" value="Photography" /><label class="form-check-label ms-2" for="catPhotography">Photography</label></div><span>2</span>
+                        <div class="form-check"><input id="catPhotography" class="form-check-input" type="checkbox" aria-describedby="catPhotography-count" value="Photography" /><label class="form-check-label ms-2" for="catPhotography">Photography</label></div><span id="catPhotography-count" aria-label="2 courses available">2</span>
                     </div>
                 </li>
                 <li class="list-group-item mb-1">
                     <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                        <div class="form-check"><input id="catTeaching" class="form-check-input" type="checkbox" value="Teaching Online" /><label class="form-check-label ms-2" for="catTeaching">Teaching Online</label></div><span>2</span>
+                        <div class="form-check"><input id="catTeaching" class="form-check-input" type="checkbox" aria-describedby="catTeaching-count" value="Teaching Online" /><label class="form-check-label ms-2" for="catTeaching">Teaching Online</label></div><span id="catTeaching-count" aria-label="2 courses available">2</span>
                     </div>
                 </li>
             </ul>
             <div class="filter-block mt-4 ms-2" data-key="level">
                 <h3 class="fw-bold h5">Level</h3>
-                <ul class="list-unstyled ps-3">
-                    <li class="form-check mb-2"><input id="levelAll" class="form-check-input" type="radio" checked name="levelFilter" value="All" /><label class="form-check-label ms-1" for="levelAll">All Levels</label></li>
-                    <li class="form-check mb-2"><input id="levelBeginner" class="form-check-input" type="radio" name="levelFilter" value="Beginner" /><label class="form-check-label ms-1" for="levelBeginner">Beginner</label></li>
-                    <li class="form-check mb-2"><input id="levelIntermediate" class="form-check-input" type="radio" name="levelFilter" value="Intermediate" /><label class="form-check-label ms-1" for="levelIntermediate">Intermediate</label></li>
-                    <li class="form-check mb-2"><input id="levelAdvanced" class="form-check-input" type="radio" name="levelFilter" value="Advanced" /><label class="form-check-label ms-1" for="levelAdvanced">Advanced</label></li>
-                </ul>
+                <fieldset>
+                    <legend class="visually-hidden">Select course level</legend>
+                    <ul class="list-unstyled ps-3">
+                        <li class="form-check mb-2"><input id="levelAll" class="form-check-input" type="radio" checked name="levelFilter" value="All" /><label class="form-check-label ms-1" for="levelAll">All Levels</label></li>
+                        <li class="form-check mb-2"><input id="levelBeginner" class="form-check-input" type="radio" name="levelFilter" value="Beginner" /><label class="form-check-label ms-1" for="levelBeginner">Beginner</label></li>
+                        <li class="form-check mb-2"><input id="levelIntermediate" class="form-check-input" type="radio" name="levelFilter" value="Intermediate" /><label class="form-check-label ms-1" for="levelIntermediate">Intermediate</label></li>
+                        <li class="form-check mb-2"><input id="levelAdvanced" class="form-check-input" type="radio" name="levelFilter" value="Advanced" /><label class="form-check-label ms-1" for="levelAdvanced">Advanced</label></li>
+                    </ul>
+                </fieldset>
             </div>
             <h3 class="fw-bold h5 mt-4">Rating</h3>
-            <ul class="list-unstyled rating-filter-list ps-3">
-                <li class="form-check mb-2"><input id="ratingAll" class="form-check-input" type="radio" checked name="ratingFilter" value="0" /><label class="form-check-label ms-1" for="ratingAll">All rating</label></li>
-                <li class="form-check mb-2"><input id="rating1" class="form-check-input" type="radio" name="ratingFilter" value="1" /><label class="form-check-label ms-1" for="rating1"><span class="text-warning rating-stars">★<span class="text-secondary">☆☆☆☆</span></span> &amp; up</label></li>
-                <li class="form-check mb-2"><input id="rating2" class="form-check-input" type="radio" name="ratingFilter" value="2" /><label class="form-check-label ms-1" for="rating2"><span class="text-warning rating-stars">★★<span class="text-secondary">☆☆☆</span></span> &amp; up</label></li>
-                <li class="form-check mb-2"><input id="rating3" class="form-check-input" type="radio" name="ratingFilter" value="3" /><label class="form-check-label ms-1" for="rating3"><span class="text-warning rating-stars">★★★<span class="text-secondary">☆☆</span></span> &amp; up</label></li>
-                <li class="form-check mb-2"><input id="rating4" class="form-check-input" type="radio" name="ratingFilter" value="4" /><label class="form-check-label ms-1" for="rating4"><span class="text-warning rating-stars">★★★★<span class="text-secondary">☆</span></span> &amp; up</label></li>
-            </ul>
+            <fieldset>
+                <legend class="visually-hidden">Select minimum rating</legend>
+                <ul class="list-unstyled rating-filter-list ps-3">
+                    <li class="form-check mb-2"><input id="ratingAll" class="form-check-input" type="radio" checked name="ratingFilter" value="0" /><label class="form-check-label ms-1" for="ratingAll">All rating</label></li>
+                    <li class="form-check mb-2"><input id="rating1" class="form-check-input" type="radio" name="ratingFilter" value="1" /><label class="form-check-label ms-1" for="rating1"><span class="text-warning rating-stars">★<span class="text-secondary">☆☆☆☆</span></span> &amp; up </label></li>
+                    <li class="form-check mb-2"><input id="rating2" class="form-check-input" type="radio" name="ratingFilter" value="2" /><label class="form-check-label ms-1" for="rating2"><span class="text-warning rating-stars">★★<span class="text-secondary">☆☆☆</span></span> &amp; up </label></li>
+                    <li class="form-check mb-2"><input id="rating3" class="form-check-input" type="radio" name="ratingFilter" value="3" /><label class="form-check-label ms-1" for="rating3"><span class="text-warning rating-stars">★★★<span class="text-secondary">☆☆</span></span> &amp; up </label></li>
+                    <li class="form-check mb-2"><input id="rating4" class="form-check-input" type="radio" name="ratingFilter" value="4" /><label class="form-check-label ms-1" for="rating4"><span class="text-warning rating-stars">★★★★<span class="text-secondary">☆</span></span> &amp; up </label></li>
+                </ul>
+            </fieldset>
             <div class="d-grid gap-2 mt-3"><button class="btn btn-warning fw-semibold" type="button" aria-label="Apply selected filters">Apply</button><button class="btn btn-dark fw-semibold" type="button" aria-label="Reset all filters">Reset</button></div>
         </aside>
         <div class="col-lg-9 mt-3 course-content-area">
@@ -150,15 +156,15 @@
                 <p class="text-light my-1 ms-2 results-status-text" aria-live="polite">Showing 0-0 of 0 results</p>
                 <div class="d-flex align-items-center gap-2 mt-2 mt-md-0">
                     <div class="flex-grow-1"><label class="form-label visually-hidden" for="search-input">Search by Title</label><input id="search-input" class="form-control" type="search" aria-label="Search by course title" placeholder="Search courses..." /></div>
-                    <div class="dropdown"><button id="sortDropdown" class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"><span class="d-none d-sm-inline sort-label me-2">Average Ratings</span><i class="d-sm-none bi bi-sort-down"></i></button>
+                    <div class="dropdown"><button id="sortDropdown" class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Sort courses by criteria"><span class="d-none d-sm-inline sort-label me-2">Average Ratings</span><i class="d-sm-none bi bi-sort-down" aria-hidden="true"></i></button>
                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" aria-labelledby="sortDropdown">
-                            <li><a class="dropdown-item" href="#">Newly published</a></li>
-                            <li><a class="dropdown-item" href="#">Title a-z</a></li>
-                            <li><a class="dropdown-item" href="#">Title z-a</a></li>
-                            <li><a class="dropdown-item" href="#">Price high to low</a></li>
-                            <li><a class="dropdown-item" href="#">Price low to high</a></li>
-                            <li><a class="dropdown-item" href="#">Popular</a></li>
-                            <li><a class="dropdown-item active" href="#">Average Ratings</a></li>
+                            <li><a class="dropdown-item" href="#" role="button">Newly published</a></li>
+                            <li><a class="dropdown-item" href="#" role="button">Title a-z</a></li>
+                            <li><a class="dropdown-item" href="#" role="button">Title z-a</a></li>
+                            <li><a class="dropdown-item" href="#" role="button">Price high to low</a></li>
+                            <li><a class="dropdown-item" href="#" role="button">Price low to high</a></li>
+                            <li><a class="dropdown-item" href="#" role="button">Popular</a></li>
+                            <li><a class="dropdown-item active" href="#" role="button">Average Ratings</a></li>
                         </ul>
                     </div>
                 </div>
@@ -173,76 +179,81 @@
         </div>
     </section>
 </main>
-    <div id="offcanvas-filters" class="offcanvas offcanvas-start visible" tabindex="-1" aria-labelledby="offcanvas-filters-label">
+    <div id="offcanvas-filters" class="offcanvas offcanvas-start" tabindex="-1" aria-labelledby="offcanvas-filters-label">
     <div class="offcanvas-header">
-        <h5 id="offcanvas-filters-label" class="offcanvas-title">Filters</h5><button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h2 id="offcanvas-filters-label" class="offcanvas-title">Filters</h2><button class="btn-close text-reset" type="button" data-bs-dismiss="offcanvas" aria-label="Close filters"></button>
     </div>
     <div id="mobileFilters" class="offcanvas-body">
         <h3 class="fw-bold mt-1">Categories</h3>
         <ul id="mobile-categories-list" class="list-group">
             <li class="list-group-item mb-1">
                 <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                    <div class="form-check"><input id="m-catBusiness" class="form-check-input" type="checkbox" value="Business" /><label class="form-check-label ms-2" for="catBusiness">Business</label></div><span>1</span>
+                    <div class="form-check"><input id="m-catBusiness" class="form-check-input" type="checkbox" aria-describedby="m-catBusiness-count" value="Business" /><label class="form-check-label ms-2" for="m-catBusiness">Business</label></div><span id="m-catBusiness-count" aria-label="1 course available">1</span>
                 </div>
             </li>
             <li class="list-group-item mb-1">
                 <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                    <div class="form-check"><input id="m-catDesign" class="form-check-input" type="checkbox" value="Design" /><label class="form-check-label ms-2" for="catDesign">Design</label></div><span>1</span>
+                    <div class="form-check"><input id="m-catDesign" class="form-check-input" type="checkbox" aria-describedby="m-catDesign-count" value="Design" /><label class="form-check-label ms-2" for="m-catDesign">Design</label></div><span id="m-catDesign-count" aria-label="1 course available">1</span>
                 </div>
             </li>
             <li class="list-group-item mb-1">
                 <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                    <div class="form-check"><input id="m-catDeveloper" class="form-check-input" type="checkbox" value="Developer" /><label class="form-check-label ms-2" for="catDeveloper">Developer</label></div><span>1</span>
+                    <div class="form-check"><input id="m-catDeveloper" class="form-check-input" type="checkbox" aria-describedby="m-catDeveloper-count" value="Developer" /><label class="form-check-label ms-2" for="m-catDeveloper">Developer</label></div><span id="m-catDeveloper-count" aria-label="1 course available">1</span>
                 </div>
             </li>
             <li class="list-group-item mb-1">
                 <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                    <div class="form-check"><input id="m-catHealth" class="form-check-input" type="checkbox" value="Health" /><label class="form-check-label ms-2" for="catHealth">Health</label></div><span>4</span>
+                    <div class="form-check"><input id="m-catHealth" class="form-check-input" type="checkbox" aria-describedby="m-catHealth-count" value="Health" /><label class="form-check-label ms-2" for="m-catHealth">Health</label></div><span id="m-catHealth-count" aria-label="4 courses available">4</span>
                 </div>
             </li>
             <li class="list-group-item mb-1">
                 <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                    <div class="form-check"><input id="m-catIT" class="form-check-input" type="checkbox" value="IT" /><label class="form-check-label ms-2" for="catIT">IT</label></div><span>3</span>
+                    <div class="form-check"><input id="m-catIT" class="form-check-input" type="checkbox" aria-describedby="m-catIT-count" value="IT" /><label class="form-check-label ms-2" for="m-catIT">IT</label></div><span id="m-catIT-count" aria-label="3 courses available">3</span>
                 </div>
             </li>
             <li class="list-group-item mb-1">
                 <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                    <div class="form-check"><input id="m-catMarketing" class="form-check-input" type="checkbox" value="Marketing" /><label class="form-check-label ms-2" for="catMarketing">Marketing</label></div><span>1</span>
+                    <div class="form-check"><input id="m-catMarketing" class="form-check-input" type="checkbox" aria-describedby="m-catMarketing-count" value="Marketing" /><label class="form-check-label ms-2" for="m-catMarketing">Marketing</label></div><span id="m-catMarketing-count" aria-label="1 course available">1</span>
                 </div>
             </li>
             <li class="list-group-item mb-1">
                 <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                    <div class="form-check"><input id="m-catPhotography" class="form-check-input" type="checkbox" value="Photography" /><label class="form-check-label ms-2" for="catPhotography">Photography</label></div><span>2</span>
+                    <div class="form-check"><input id="m-catPhotography" class="form-check-input" type="checkbox" aria-describedby="m-catPhotography-count" value="Photography" /><label class="form-check-label ms-2" for="m-catPhotography">Photography</label></div><span id="m-catPhotography-count" aria-label="2 courses available">2</span>
                 </div>
             </li>
             <li class="list-group-item mb-1">
                 <div class="fw-semibold text-warning-emphasis d-flex justify-content-between align-items-center">
-                    <div class="form-check"><input id="m-catTeaching" class="form-check-input" type="checkbox" value="Teaching Online" /><label class="form-check-label ms-2" for="catTeaching">Teaching Online</label></div><span>2</span>
+                    <div class="form-check"><input id="m-catTeaching" class="form-check-input" type="checkbox" aria-describedby="m-catTeaching-count" value="Teaching Online" /><label class="form-check-label ms-2" for="m-catTeaching">Teaching Online</label></div><span id="m-catTeaching-count" aria-label="2 courses available">2</span>
                 </div>
             </li>
         </ul>
         <div class="filter-block mt-4 ms-2" data-key="level">
             <h3 class="fw-bold">Level</h3>
-            <ul class="list-unstyled ps-3">
-                <li class="form-check mb-2"><input id="m-levelAll" class="form-check-input" type="radio" checked name="levelFilter" value="All" /><label class="form-check-label ms-1" for="levelAll">All Levels</label></li>
-                <li class="form-check mb-2"><input id="m-levelBeginner" class="form-check-input" type="radio" name="levelFilter" value="Beginner" /><label class="form-check-label ms-1" for="levelBeginner">Beginner</label></li>
-                <li class="form-check mb-2"><input id="m-levelIntermediate" class="form-check-input" type="radio" name="levelFilter" value="Intermediate" /><label class="form-check-label ms-1" for="levelIntermediate">Intermediate</label></li>
-                <li class="form-check mb-2"><input id="m-levelAdvanced" class="form-check-input" type="radio" name="levelFilter" value="Advanced" /><label class="form-check-label ms-1" for="levelAdvanced">Advanced</label></li>
-            </ul>
+            <fieldset>
+                <legend class="visually-hidden">Select course level</legend>
+                <ul class="list-unstyled ps-3">
+                    <li class="form-check mb-2"><input id="m-levelAll" class="form-check-input" type="radio" checked name="levelFilter" value="All" /><label class="form-check-label ms-1" for="m-levelAll">All Levels</label></li>
+                    <li class="form-check mb-2"><input id="m-levelBeginner" class="form-check-input" type="radio" name="levelFilter" value="Beginner" /><label class="form-check-label ms-1" for="m-levelBeginner">Beginner</label></li>
+                    <li class="form-check mb-2"><input id="m-levelIntermediate" class="form-check-input" type="radio" name="levelFilter" value="Intermediate" /><label class="form-check-label ms-1" for="m-levelIntermediate">Intermediate</label></li>
+                    <li class="form-check mb-2"><input id="m-levelAdvanced" class="form-check-input" type="radio" name="levelFilter" value="Advanced" /><label class="form-check-label ms-1" for="m-levelAdvanced">Advanced</label></li>
+                </ul>
+            </fieldset>
         </div>
         <h3 class="fw-bold mt-4">Rating</h3>
-        <ul class="list-unstyled rating-filter-list ps-3">
-            <li class="form-check mb-2"><input id="m-ratingAll" class="form-check-input" type="radio" checked name="ratingFilter" value="0" /><label class="form-check-label ms-1" for="ratingAll">All rating</label></li>
-            <li class="form-check mb-2"><input id="m-rating1" class="form-check-input" type="radio" name="ratingFilter" value="1" /><label class="form-check-label ms-1" for="rating1"><span class="text-warning rating-stars">★<span class="text-secondary">☆☆☆☆</span></span> &amp; up</label></li>
-            <li class="form-check mb-2"><input id="m-rating2" class="form-check-input" type="radio" name="ratingFilter" value="2" /><label class="form-check-label ms-1" for="rating2"><span class="text-warning rating-stars">★★<span class="text-secondary">☆☆☆</span></span> &amp; up</label></li>
-            <li class="form-check mb-2"><input id="m-rating3" class="form-check-input" type="radio" name="ratingFilter" value="3" /><label class="form-check-label ms-1" for="rating3"><span class="text-warning rating-stars">★★★<span class="text-secondary">☆☆</span></span> &amp; up</label></li>
-            <li class="form-check mb-2"><input id="m-rating4" class="form-check-input" type="radio" name="ratingFilter" value="4" /><label class="form-check-label ms-1" for="rating4"><span class="text-warning rating-stars">★★★★<span class="text-secondary">☆</span></span> &amp; up</label></li>
-        </ul>
+        <fieldset>
+            <legend class="visually-hidden">Select minimum rating</legend>
+            <ul class="list-unstyled rating-filter-list ps-3">
+                <li class="form-check mb-2"><input id="m-ratingAll" class="form-check-input" type="radio" checked name="ratingFilter" value="0" /><label class="form-check-label ms-1" for="m-ratingAll">All rating</label></li>
+                <li class="form-check mb-2"><input id="m-rating1" class="form-check-input" type="radio" name="ratingFilter" value="1" /><label class="form-check-label ms-1" for="m-rating1"><span class="text-warning rating-stars">★<span class="text-secondary">☆☆☆☆</span></span> &amp; up </label></li>
+                <li class="form-check mb-2"><input id="m-rating2" class="form-check-input" type="radio" name="ratingFilter" value="2" /><label class="form-check-label ms-1" for="m-rating2"><span class="text-warning rating-stars">★★<span class="text-secondary">☆☆☆</span></span> &amp; up </label></li>
+                <li class="form-check mb-2"><input id="m-rating3" class="form-check-input" type="radio" name="ratingFilter" value="3" /><label class="form-check-label ms-1" for="m-rating3"><span class="text-warning rating-stars">★★★<span class="text-secondary">☆☆</span></span> &amp; up </label></li>
+                <li class="form-check mb-2"><input id="m-rating4" class="form-check-input" type="radio" name="ratingFilter" value="4" /><label class="form-check-label ms-1" for="m-rating4"><span class="text-warning rating-stars">★★★★<span class="text-secondary">☆</span></span> &amp; up </label></li>
+            </ul>
+        </fieldset>
         <div class="d-grid gap-2 mt-3"><button id="mobileApply" class="btn btn-warning fw-semibold" type="button" aria-label="Apply selected filters">Apply</button><button id="mobileReset" class="btn btn-dark fw-semibold" type="button" aria-label="Reset all filters">Reset</button></div>
     </div>
 </div>
-    <button id="floatingFilterBtn" class="btn btn-warning btn-lg shadow d-lg-none rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-filters" aria-controls="offcanvas-filters" style="position: fixed;bottom: 20px;left: 20px;z-index: 1045;transition: transform 0.3s ease-in-out;"><i class="bi bi-funnel-fill"></i><span class="visually-hidden">Open Filters</span></button>
-    
+    <button id="floatingFilterBtn" class="btn btn-warning btn-lg shadow d-lg-none rounded-circle" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas-filters" aria-controls="offcanvas-filters" aria-label="Open course filters" style="position: fixed;bottom: 20px;left: 20px;z-index: 1045;transition: transform 0.3s ease-in-out;"><i class="bi bi-funnel-fill" aria-hidden="true"></i><span class="visually-hidden">Open Filters</span></button>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/js/courses.js"></script>
     <script src="../assets/js/script.js"></script>
