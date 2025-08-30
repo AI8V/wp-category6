@@ -818,3 +818,21 @@ body {
 #floatingFilterBtn.is-hidden {
   transform: translateY(120px);
 }
+
+@media (max-width: 576px) {
+  .course-content-area {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .course-content-area > .row {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .course-content-area > .row > [class*="col-"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .course-card-overlay {
+    border-radius: 0;
+  }
+}
