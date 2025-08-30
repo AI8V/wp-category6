@@ -678,12 +678,6 @@ body {
 /* For Tablets and smaller devices (<= 991px) */
 
 @media (max-width: 991px) {
-  .course-sidebar {
-    display: none !important;
-  }
-}
-
-@media (max-width: 991px) {
   .container-fluid {
     margin: 1rem;
     max-width: calc(100% - 2rem);
