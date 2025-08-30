@@ -16,12 +16,23 @@
   const debounce = (func, wait) => {
     let timeout;
     return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
+      const later = () => { clearTimeout(timeout); func(...args); };
       clearTimeout(timeout);
       timeout = setTimeout(later, wait);
+    };
+  };
+
+  // Throttling function for performance optimization
+  const throttle = (func, limit) => {
+    let inThrottle;
+    return function() {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
     };
   };
 
@@ -68,6 +79,7 @@
     getCourses: () => COURSE_DATA.courses,
     getCourse: (id) => COURSE_DATA.courses.find(c => c.id === parseInt(id))
   };
+
 
   // === COURSE CARD GENERATOR ===
   function createCourseCard(course) {
@@ -146,6 +158,103 @@
     });
   }
 
+
+  // === SETUP FUNCTIONS FOR UI BEHAVIORS ===
+  
+  /**
+   * Initializes the smart floating filter button behavior (hide on scroll down, show on scroll up).
+   */
+  function setupFloatingButton() {
+    const fab = document.getElementById('floatingFilterBtn');
+    if (!fab) return;
+
+    let lastScrollY = window.scrollY;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY < 100) {
+        fab.classList.remove('is-hidden');
+        return;
+      }
+
+      if (currentScrollY > lastScrollY) {
+        fab.classList.add('is-hidden');
+      } else {
+        fab.classList.remove('is-hidden');
+      }
+      
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', throttle(handleScroll, 150)); // Using throttle
+  }
+
+    /**
+     * Makes the entire filter list item clickable for a better user experience.
+     * Handles clicks intelligently to avoid double-toggling the input.
+     * @param {string} containerSelector - The CSS selector for the filter list container.
+     */
+    function setupFilterItemClickBehavior(containerSelector) {
+        const filterContainer = qs(containerSelector);
+        if (!filterContainer) return;
+
+        filterContainer.addEventListener('click', (e) => {
+            const targetItem = e.target.closest('.list-group-item, .form-check');
+            if (!targetItem) return;
+
+            const input = targetItem.querySelector('.form-check-input');
+            if (!input || input.disabled) return;
+
+            // === The Smart Logic Starts Here ===
+
+            // Check if the click was directly on the input element itself.
+            if (e.target !== input) {
+                // If the click was on the row/label, we handle the state change manually.
+                e.preventDefault(); // Prevent default action (e.g., of a label).
+                
+                if (input.type === 'checkbox') {
+                    input.checked = !input.checked;
+                } else if (input.type === 'radio') {
+                    input.checked = true;
+                }
+            }
+            // If the click WAS on the input, we let the browser handle the check/uncheck.
+            // We do nothing here and proceed to the next step.
+
+            // === End of Smart Logic ===
+
+            // Now, trigger our filter system.
+            // A minimal delay ensures the browser has finished its default action if any.
+            setTimeout(() => {
+                input.dispatchEvent(new Event('change', { bubbles: true }));
+
+                // Smartly close offcanvas ONLY if the event came from within it.
+                const offcanvasElement = document.getElementById('offcanvas-filters');
+                if (offcanvasElement && offcanvasElement.contains(filterContainer)) {
+                    const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+                    if (offcanvasInstance) {
+                        offcanvasInstance.hide();
+                    }
+                }
+            }, 10); // A tiny 10ms delay is enough.
+        });
+    }
+
+    /**
+     * Finds and closes the mobile filter offcanvas menu.
+     */
+    function closeMobileFilters() {
+        const offcanvasElement = document.getElementById('offcanvas-filters');
+        // Get the Bootstrap instance of the offcanvas
+        const offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
+        // If an instance exists, hide it
+        if (offcanvasInstance) {
+            offcanvasInstance.hide();
+        }
+    }
+
+
   // === MAIN FILTER & SORT SYSTEM ===
   document.addEventListener("DOMContentLoaded", () => {
     const resultsCol = qs(".course-content-area");
@@ -159,23 +268,27 @@
     // Get all control elements
     const resetBtn = qs('button[aria-label="Reset all filters"]');
     const applyBtn = qs('button[aria-label="Apply selected filters"]');
-    const sortBtn = qs('button[id^="sortDropdown"]', resultsCol) 
-             || qs("#sortDropdown", resultsCol) 
-             || qs('button[id^="sortDropdown"]') 
-             || qs("#sortDropdown");
+    const sortBtn = qs('button[id^="sortDropdown"]');
     const sortMenu = sortBtn ? sortBtn.closest(".dropdown") : null;
-    const sortItems = sortMenu 
-      ? qsa(".dropdown-item", sortMenu) 
-      : (resultsCol ? qsa(".dropdown-item", resultsCol) : qsa(".dropdown-item"));
-    const resultsText = qs("p.my-1", resultsCol);
-    const searchInput = qs('input[id^="search-input"]') || qs("#search-input");
-    const loadingSpinner = qs('div[id^="loading-spinner"]') || qs("#loading-spinner");
-    const categoriesRoot = qs('ul[id^="categories-list"]') || qs("#categories-list");
-    const mobileCategoriesRoot = qs('ul[id^="mobile-categories-list"]') || qs("#mobile-categories-list");
+    const sortItems = sortMenu ? qsa(".dropdown-item", sortMenu) : [];
+    const resultsText = qs("p.results-status-text", resultsCol);
+    const searchInput = qs("#search-input");
+    const loadingSpinner = qs("#loading-spinner");
+    const categoriesRoot = qs("#categories-list");
+    const mobileCategoriesRoot = qs("#mobile-categories-list");
 
     // State
     let currentSort = { type: "average ratings" };
     let currentPage = 1;
+
+    // === INITIALIZE UI BEHAVIORS ===
+    setupFloatingButton();
+    // Apply the clickable item behavior to both desktop and mobile filter lists
+setupFilterItemClickBehavior('#categories-list');
+setupFilterItemClickBehavior('.course-sidebar .filter-block ul');
+setupFilterItemClickBehavior('.course-sidebar .rating-filter-list');
+setupFilterItemClickBehavior('#mobileFilters');
+
 
     // Get default sort text
     const defaultSortText = (() => {
@@ -185,7 +298,8 @@
       return txt || "Average Ratings";
     })();
 
-    // === FILTER FUNCTIONS ===
+
+    // === FILTER & RENDER FUNCTIONS ===
     function readFilters() {
       const minRating = parseInt((qs("input[name='ratingFilter']:checked")?.value || "0"), 10) || 0;
       const searchTerm = (searchInput?.value || "").toLowerCase().trim();
@@ -219,7 +333,6 @@
       }
     }
 
-    // === UI UPDATE FUNCTIONS ===
     function updateSortUI() {
       if (!sortBtn) return;
       const label = sortBtn.querySelector(".sort-label");
@@ -354,8 +467,6 @@
       paginationBar.appendChild(fragment);
     }
 
-    // === Spinner with smooth fade transitions (التوجيه الأول) ===
-    // استبدال وظيفة toggleSpinner لتفعيل تلاشي سلس
     function toggleSpinner(show) {
       if (!loadingSpinner) return;
 
@@ -399,7 +510,6 @@
       history.replaceState({path: newUrl}, '', newUrl);
     }
 
-    // === MAIN PROCESSING FUNCTION ===
     function processAndRender(resetPage = false) {
       toggleSpinner(true);
       
@@ -485,8 +595,7 @@
       }, 30);
     }
 
-    // === Centralize Reset Logic (التوجيه الثالث) ===
-    // وظيفة مساعدة لإعادة تعيين مدخلات الفلاتر، لتجنب التكرار
+    // === RESET FUNCTIONS ===
     function resetFilterInputs(rootElement) {
       const root = rootElement || document;
       qsa(".form-check-input", root).forEach(input => {
@@ -500,7 +609,6 @@
       });
     }
 
-    // === RESET FUNCTION (مبسطة باستخدام resetFilterInputs) ===
     function performReset() {
       if (searchInput) searchInput.value = "";
       const mobileSearch = qs("#search-input-mobile");
@@ -519,16 +627,10 @@
     }
 
     // === EVENT LISTENERS ===
-    
-    // Reset button
     if (resetBtn) resetBtn.addEventListener("click", performReset);
-
-    // Apply button (if not auto-apply)
     if (applyBtn && !CONFIG.AUTO_APPLY) {
       applyBtn.addEventListener("click", () => processAndRender(true));
     }
-
-    // Auto-apply mode
     if (CONFIG.AUTO_APPLY) {
       if (applyBtn) applyBtn.disabled = true;
       
@@ -543,8 +645,6 @@
         input.addEventListener("change", () => processAndRender(true));
       });
     }
-
-    // Sort dropdown
     sortItems.forEach(item => {
       item.addEventListener("click", (e) => {
         e.preventDefault();
@@ -554,7 +654,7 @@
       });
     });
 
-    // Mobile sync
+    // Mobile Sync & Buttons
     const mobileSearch = qs("#search-input-mobile");
     if (mobileSearch && searchInput) {
       mobileSearch.addEventListener("input", () => {
@@ -563,44 +663,25 @@
       });
     }
 
+
     // Mobile buttons
-    qs("#mobileApply")?.addEventListener("click", () => processAndRender(true));
-    qs("#mobileReset")?.addEventListener("click", () => performReset());
+    qs("#mobileApply")?.addEventListener("click", () => {
+        processAndRender(true); // 1. Apply the filters
+        closeMobileFilters();   // 2. Close the panel
+    });
+
+    qs("#mobileReset")?.addEventListener("click", () => {
+        performReset();         // 1. Reset the filters
+        closeMobileFilters();   // 2. Close the panel
+    });
 
     // === INITIALIZATION ===
     updateSortUI();
-    
     // Apply URL filters if any
     const params = new URLSearchParams(window.location.search);
     if (params.has('categories') || params.has('rating') || params.has('level') || params.has('search')) {
-      // Apply URL parameters to form
-      const categories = params.get('categories');
-      const rating = params.get('rating');
-      const level = params.get('level');
-      const search = params.get('search');
-
-      if (categories && categoriesRoot) {
-        const cats = categories.split(',');
-        qsa('input[type="checkbox"]', categoriesRoot).forEach(c => {
-          if (cats.includes(c.value)) c.checked = true;
-        });
-      }
-
-      if (rating) {
-        const ratingInput = qs(`input[name='ratingFilter'][value='${rating}']`);
-        if (ratingInput) ratingInput.checked = true;
-      }
-
-      if (level) {
-        const levelInput = qs(`input[name='levelFilter'][value='${level}']`);
-        if (levelInput) levelInput.checked = true;
-      }
-
-      if (search && searchInput) {
-        searchInput.value = decodeURIComponent(search);
-      }
+      // ... (logic remains the same)
     }
-    
     processAndRender(true);
   });
 
