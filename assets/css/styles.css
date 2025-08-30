@@ -1,75 +1,9 @@
-:root {
-  --primary-50: #fefce8;
-  --primary-100: #fef3c7;
-  --primary-200: #fde68a;
-  --primary-300: #fcd34d;
-  --primary-500: #1f2937;
-  --primary-600: #111827;
-  --primary-700: #030712;
-  --primary-900: #000000;
-  --gold-400: #fbbf24;
-  --gold-500: #f59e0b;
-  --gold-600: #d97706;
-  --gold-700: #b45309;
-  --success-400: #34d399;
-  --success-500: #10b981;
-  --warning-400: #fbbf24;
-  --warning-500: #f59e0b;
-  --gray-50: #f9fafb;
-  --gray-100: #f3f4f6;
-  --gray-200: #e5e7eb;
-  --gray-300: #d1d5db;
-  --gray-600: #4b5563;
-  --gray-700: #374151;
-  --gray-800: #1f2937;
-  --gray-900: #111827;
-  --white: #ffffff;
-  --black: #000000;
-  --gradient-primary: linear-gradient(135deg, #1f2937 0%, #fbbf24 100%);
-  --gradient-secondary: linear-gradient(135deg, #111827 0%, #f59e0b 100%);
-  --gradient-dark: linear-gradient(135deg, #030712 0%, #1f2937 100%);
-  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-  --gradient-overlay: linear-gradient(135deg, rgba(31, 41, 55, 0.95) 0%, rgba(251, 191, 36, 0.85) 100%);
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --font-family-primary: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-family-display: 'Poppins', sans-serif;
-  --border-radius-sm: 0.375rem;
-  --border-radius-md: 0.5rem;
-  --border-radius-lg: 0.75rem;
-  --border-radius-xl: 1rem;
-  --border-radius-2xl: 1.5rem;
-  --transition-fast: all 0.15s ease;
-  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
+/* ============================================
+   Courses Page Specific Styles ONLY
+   استخدم فقط في صفحة الكورسات
+============================================ */
 
-/* Import Modern Fonts */
-
-/* Global Styles */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: var(--font-family-primary);
-  background: var(--gradient-dark);
-  background-attachment: fixed;
-  color: var(--gray-800);
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  min-height: 100vh;
-}
-
-/* Container Enhancements */
+/* Container Enhancement - Specific to Courses Page */
 
 .container-fluid {
   backdrop-filter: blur(10px);
@@ -83,7 +17,9 @@ body {
   padding: 1.5rem;
 }
 
-/* Sidebar */
+/* ============================================
+   Sidebar - Courses Page Only
+============================================ */
 
 .course-sidebar {
   background: #111827;
@@ -93,11 +29,10 @@ body {
   border: 1px solid rgba(251, 191, 36, 0.15);
 }
 
-/* Sidebar Headers */
-
 .course-sidebar h2, .course-sidebar h3 {
   color: var(--gold-500);
   font-family: var(--font-family-display);
+  position: relative;
 }
 
 .course-sidebar h2::after, .course-sidebar h3::after {
@@ -105,13 +40,13 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 50px;
   height: 3px;
-  background: var(--gradient-gold);
   border-radius: 2px;
 }
 
-/* Search Input Enhancement */
+/* ============================================
+   Search Input - Courses Page
+============================================ */
 
 #search-input {
   border: 2px solid transparent;
@@ -134,7 +69,9 @@ body {
   transform: translateY(-2px);
 }
 
-/* Categories List */
+/* ============================================
+   Filter Lists - Courses Page
+============================================ */
 
 .list-group {
   background: transparent;
@@ -159,67 +96,9 @@ body {
   background: var(--primary-50);
 }
 
-.form-check-input {
-  width: 1.25rem;
-  height: 1.25rem;
-  border: 2px solid var(--primary-300);
-  border-radius: var(--border-radius-sm);
-  transition: var(--transition-fast);
-}
-
-.form-check-input:checked {
-  background: var(--gradient-gold);
-  border-color: var(--gold-600);
-  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.2);
-}
-
-/* Filter Buttons */
-
-.btn {
-  font-weight: 600;
-  letter-spacing: 0.025em;
-  border-radius: var(--border-radius-lg);
-  padding: 0.875rem 2rem;
-  transition: var(--transition-bounce);
-  border: none;
-  position: relative;
-  overflow: hidden;
-}
-
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(251, 191, 36, 0.2);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.6s ease;
-  z-index: 0;
-}
-
-.btn:hover::before {
-  width: 300px;
-  height: 300px;
-}
-
-.btn > * {
-  position: relative;
-  z-index: 1;
-}
-
-.btn-warning {
-  background: var(--gradient-gold);
-  color: var(--white);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-warning:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-xl);
-}
+/* ============================================
+   Filter Buttons - Courses Page Specific
+============================================ */
 
 .btn-primary {
   background: var(--gradient-dark);
@@ -233,8 +112,6 @@ body {
   box-shadow: var(--shadow-xl);
   background: var(--gradient-secondary);
 }
-
-/* Filter Toggle Button */
 
 .btn-outline-primary {
   background: var(--white);
@@ -253,7 +130,9 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* Sort Dropdown */
+/* ============================================
+   Sort Dropdown - Courses Page
+============================================ */
 
 .dropdown-toggle {
   background: var(--gradient-dark);
@@ -271,33 +150,9 @@ body {
   background: var(--gradient-secondary);
 }
 
-.dropdown-menu {
-  background: var(--primary-700);
-  border: 1px solid var(--gold-500);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-xl);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  margin-top: 0.5rem;
-}
-
-.dropdown-item {
-  padding: 0.875rem 1.25rem;
-  font-weight: 500;
-  color: var(--gold-400);
-  transition: var(--transition-smooth);
-  border-radius: var(--border-radius-md);
-  margin: 0.25rem 0.5rem;
-}
-
-.dropdown-item:hover, .dropdown-item.active {
-  background: var(--gradient-gold);
-  color: var(--primary-700);
-  transform: translateX(-5px);
-  font-weight: 600;
-}
-
-/* Course Cards - Major Enhancement */
+/* ============================================
+   Course Cards - Main Feature
+============================================ */
 
 .course-card {
   background: var(--gradient-card);
@@ -364,7 +219,6 @@ body {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  /*background: var(--gradient-gold);*/
   color: var(--primary-700);
   font-size: 0.75rem;
   font-weight: 700;
@@ -409,15 +263,6 @@ body {
   transform: translateY(-2px);
 }
 
-.price-text-gradient {
-  font-size: 1.5rem !important;
-  font-weight: 800;
-  background: var(--gradient-gold);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
 /* Card Meta */
 
 .card-meta {
@@ -428,11 +273,7 @@ body {
   font-weight: 500;
 }
 
-.icon-gold {
-  color: var(--gold-500) !important;
-}
-
-/* Hover Overlay Enhancement */
+/* Course Card Overlay */
 
 .course-card-overlay {
   position: absolute;
@@ -499,7 +340,9 @@ body {
   color: var(--primary-700);
 }
 
-/* Pagination Enhancement */
+/* ============================================
+   Pagination - Courses Page
+============================================ */
 
 .pagination {
   margin-top: 3rem;
@@ -533,7 +376,9 @@ body {
   font-weight: 700;
 }
 
-/* Loading Spinner Enhancement */
+/* ============================================
+   Loading Spinner - Courses Page
+============================================ */
 
 .loading-spinner {
   position: absolute;
@@ -556,16 +401,9 @@ body {
   animation: spin 1s linear infinite;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* Results Text */
+/* ============================================
+   Results Text - Courses Page
+============================================ */
 
 .course-content-area .results-status-text {
   font-weight: 600;
@@ -577,7 +415,9 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-/* Mobile Offcanvas Enhancement */
+/* ============================================
+   Mobile Offcanvas - Courses Page
+============================================ */
 
 .offcanvas {
   background: #111827;
@@ -608,18 +448,17 @@ body {
   filter: brightness(0) invert(1);
 }
 
-/* Animation Classes */
+/* ============================================
+   Floating Filter Button - Courses Page
+============================================ */
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+#floatingFilterBtn.is-hidden {
+  transform: translateY(120px);
 }
+
+/* ============================================
+   Course Cards Animation - Courses Page
+============================================ */
 
 .course-card {
   animation: fadeInUp 0.6s ease forwards;
@@ -649,31 +488,9 @@ body {
   animation-delay: 0.6s;
 }
 
-/* Scrollbar Styling */
-
-::-webkit-scrollbar {
-  width: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--gray-100);
-  border-radius: var(--border-radius-lg);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--gradient-gold);
-  border-radius: var(--border-radius-lg);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--gold-700);
-}
-
-/* ================================== */
-
-/* Mobile Responsiveness */
-
-/* ================================== */
+/* ============================================
+   Mobile Responsiveness - Courses Page
+============================================ */
 
 /* For Tablets and smaller devices (<= 991px) */
 
@@ -697,8 +514,6 @@ body {
 }
 
 /* For Mobile phones (<= 768px) */
-
-/* Course Cards adjustments */
 
 @media (max-width: 768px) {
   .course-card:hover {
@@ -734,23 +549,11 @@ body {
   }
 }
 
-/* Course Card Overlay adjustments */
-
 @media (max-width: 768px) {
   .course-card-overlay {
     padding: 1.5rem;
   }
 }
-
-/* Fix for header elements layout 
-
-@media (max-width: 768px) {
-  .course-content-area .results-toolbar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-} */
 
 /* For smaller mobile devices (<= 576px) */
 
@@ -774,64 +577,28 @@ body {
   }
 }
 
-/* ================================== */
-
-/* Custom Badge Colors for Dark Theme */
-
-/* ================================== */
-
-.badge.bg-primary {
-  background-color: var(--primary-500) !important;
-  color: var(--gold-400) !important;
-}
-
-.badge.bg-secondary {
-  background-color: var(--gray-600) !important;
-  color: var(--gray-100) !important;
-}
-
-.badge.bg-success {
-  background-color: var(--success-500) !important;
-  color: var(--white) !important;
-}
-
-.badge.bg-danger {
-  background-color: #dc3545 !important;
-  color: var(--white) !important;
-}
-
-.badge.bg-warning {
-  background-color: var(--gold-500) !important;
-  color: var(--primary-700) !important;
-}
-
-.badge.bg-info {
-  background-color: #0dcaf0 !important;
-  color: var(--primary-700) !important;
-}
-
-.badge.bg-dark {
-  background-color: var(--gray-900) !important;
-  color: var(--gold-400) !important;
-}
-
-#floatingFilterBtn.is-hidden {
-  transform: translateY(120px);
-}
-
 @media (max-width: 576px) {
   .course-content-area {
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+@media (max-width: 576px) {
   .course-content-area > .row {
     margin-left: 0;
     margin-right: 0;
   }
+}
+
+@media (max-width: 576px) {
   .course-content-area > .row > [class*="col-"] {
     padding-left: 0;
     padding-right: 0;
   }
+}
+
+@media (max-width: 576px) {
   .course-card-overlay {
     border-radius: 0;
   }
